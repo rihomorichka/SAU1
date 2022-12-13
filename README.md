@@ -78,3 +78,10 @@ while play:
             pipes.remove(pipe)
             if pipe in pipesScores:
                 pipesScores.remove(pipe)
+                
+      if state == 'start':
+        if click and not timer and not len(pipes): state = 'play' #начинаем игру если кликнули и нет труб
+
+        py += (HEIGHT // 2 - py) * 0.1 #возвращаем в стартовое положение птицы в центре экрана
+        player.y = py #возвращение на стартовое положение
+

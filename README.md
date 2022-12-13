@@ -115,3 +115,24 @@ while play:
                 pipesScores.append(pipe) #добавляем в список
                 scores += 5
                 pipeSpeed = 3 + scores // 100 #скорость появления
+
+
+    elif state == 'fall':
+        sndFall.play()
+        sy, ay = 0, 0 #сбрасываем значение чтобы не гнала
+        pipeGatePos = HEIGHT // 2
+
+        lives -= 1 #отнимаем жизнь
+        if lives:
+            state = 'start' #ждем клика
+            timer = 60
+        else:
+            state = 'game over'
+            timer = 180
+
+    else:
+        py += sy #механика падения птички место плюс скорость
+        sy = (sy + ay + 1) * 0.98 #увеличение скорости плюс гравитация
+        player.y = py
+
+        if not timer: play = False

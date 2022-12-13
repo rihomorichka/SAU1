@@ -148,3 +148,7 @@ while play:
         else:
             rect = imgPB.get_rect(topleft=pipe.topleft) #совмещение по верхнему левому углу
             window.blit(imgPB, rect) #выводим
+
+    image = imgBird.subsurface(34 * int(frame), 0, 34, 24) #выбираем номер фрэйм для анимации крыльев и из большого изображения получаем маленькое координаты точки и ширина с высотой
+    image = pygame.transform.rotate(image, -sy * 2) #исходное изображение и угол для движения носика птички
+    window.blit(image, player)

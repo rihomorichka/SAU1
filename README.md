@@ -152,3 +152,10 @@ while play:
     image = imgBird.subsurface(34 * int(frame), 0, 34, 24) #выбираем номер фрэйм для анимации крыльев и из большого изображения получаем маленькое координаты точки и ширина с высотой
     image = pygame.transform.rotate(image, -sy * 2) #исходное изображение и угол для движения носика птички
     window.blit(image, player)
+
+
+    text = font1.render('Очки: ' + str(scores), 1, 'black')
+    window.blit(text, (10, 10))
+
+    text = font1.render('Жизни: ' + str(lives), 1, 'black')
+    window.blit(text, (10, HEIGHT - 30))

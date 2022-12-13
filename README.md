@@ -45,3 +45,17 @@ bges.append(pygame.Rect(0, 0, 288, 600)) #рамка фон
 
 lives = 5 #жизни
 scores = 0 #начальное число очков
+
+play = True #пока значение тру цикл
+while play:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT: #если пользователь закрыл то кык
+            play = False
+
+    press = pygame.mouse.get_pressed() #придаем значение типа
+    keys = pygame.key.get_pressed()
+    click = press[0] or keys[pygame.K_SPACE] #два варика о тип левая кнопка мыши
+
+    if timer: timer -= 1 #таймер стремится к нулю
+
+    frame = (frame + 0.2) % 4 #смена крыльев

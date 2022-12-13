@@ -25,3 +25,23 @@ pygame.mixer.music.set_volume(0.3) #громкость
 pygame.mixer.music.play(-1) #бесконечное повторение музыки
 
 sndFall = pygame.mixer.Sound('sounds/fall.wav') #даем название для воспроизведения
+
+py, sy, ay = HEIGHT // 2, 0, 0  #положение птички, скорость, ускорение
+player = pygame.Rect(WIDTH // 3, py, 34, 24) #рамки птички
+frame = 0 #для анимации
+
+state = 'start' #начальное полжение птичка прост стоит
+timer = 10 #нельзя управлять в течение этого времени
+
+pipes = [] #создаем список труб
+bges = [] #для фона
+pipesScores = []
+
+pipeSpeed = 8 #скорость приближения труб
+pipeGateSize = 200 #ширина дырки
+pipeGatePos = HEIGHT // 2 #хз пока
+
+bges.append(pygame.Rect(0, 0, 288, 600)) #рамка фон
+
+lives = 5 #жизни
+scores = 0 #начальное число очков

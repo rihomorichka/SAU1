@@ -14,3 +14,8 @@ pygame.display.set_caption('Flappy bird') #название игры в углу
 pygame.display.set_icon(pygame.image.load('images/icon.png')) #иконка игры в углу
 
 font1 = pygame.font.Font(None, 35) #размер шрифта жизни и очки
+
+imgBG = pygame.image.load('images/background.png') #загружаем пикчи
+imgBird = pygame.image.load('images/bird.png')
+imgPT = pygame.image.load('images/pipe_top.png')
+imgPB = pygame.image.load('images/pipe_bottom.png')

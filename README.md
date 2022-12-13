@@ -163,3 +163,6 @@ while play:
 
     pygame.display.update() #чтоб обновляла экран
     clock.tick(FPS)
+
+
+pygame.quit() #закрывается

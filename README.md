@@ -85,3 +85,33 @@ while play:
         py += (HEIGHT // 2 - py) * 0.1 #возвращаем в стартовое положение птицы в центре экрана
         player.y = py #возвращение на стартовое положение
 
+    elif state == 'play': #игра
+        if click:
+            ay = -0.5 #ускорение и положение меняется птичка вниз оп
+        else:
+            ay = 0
+
+        py += sy #увеличиваем положение птички на скорость
+        sy = (sy + ay + 0.5) * 0.98 #чему равна скорость гравитация сопротивление
+        player.y = py #возвращаем на место
+
+        if not len(pipes) or pipes[len(pipes) - 1].x < WIDTH - 200:
+            pipes.append(pygame.Rect(WIDTH, 0, 52, pipeGatePos - pipeGateSize // 2))
+            pipes.append(
+                pygame.Rect(WIDTH, pipeGatePos + pipeGateSize // 2, 52, HEIGHT - pipeGatePos + pipeGateSize // 2))
+
+            pipeGatePos += randint(-100, 100)
+            if pipeGatePos < pipeGateSize:
+                pipeGatePos = pipeGateSize
+            elif pipeGatePos > HEIGHT - pipeGateSize:
+                pipeGatePos = HEIGHT - pipeGateSize
+
+        if player.top < 0 or player.bottom > HEIGHT: state = 'fall' #если птичка ниже нуля то возвращаем ее в фолл и оттуда уже старт энд хир уи го эгэйн
+
+        for pipe in pipes:
+            if player.colliderect(pipe): state = 'fall' #чекаем на столкновение с рект трубы
+
+            if pipe.right < player.left and pipe not in pipesScores: #чтобы труба удалялась иначе память забьется
+                pipesScores.append(pipe) #добавляем в список
+                scores += 5
+                pipeSpeed = 3 + scores // 100 #скорость появления

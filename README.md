@@ -19,3 +19,9 @@ imgBG = pygame.image.load('images/background.png') #загружаем пикч�
 imgBird = pygame.image.load('images/bird.png')
 imgPT = pygame.image.load('images/pipe_top.png')
 imgPB = pygame.image.load('images/pipe_bottom.png')
+
+pygame.mixer.music.load('sounds/music.mp3') #загружаем саундтрек игры миксер чтобы звук накладывался друг на друга
+pygame.mixer.music.set_volume(0.3) #громкость
+pygame.mixer.music.play(-1) #бесконечное повторение музыки
+
+sndFall = pygame.mixer.Sound('sounds/fall.wav') #даем название для воспроизведения

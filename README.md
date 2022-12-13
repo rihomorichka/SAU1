@@ -136,3 +136,15 @@ while play:
         player.y = py
 
         if not timer: play = False
+
+
+    # Отрисовка
+    for bg in bges: window.blit(imgBG, bg)
+
+    for pipe in pipes:
+        if not pipe.y: #
+            rect = imgPT.get_rect(bottomleft=pipe.bottomleft) #
+            window.blit(imgPT, rect) #выводим изображение
+        else:
+            rect = imgPB.get_rect(topleft=pipe.topleft) #совмещение по верхнему левому углу
+            window.blit(imgPB, rect) #выводим

@@ -59,3 +59,22 @@ while play:
     if timer: timer -= 1 #таймер стремится к нулю
 
     frame = (frame + 0.2) % 4 #смена крыльев
+
+
+    for i in range(len(bges) - 1, -1, -1): #
+        bg = bges[i] #лист со значением ай
+        bg.x -= pipeSpeed // 2 #скорость меньше чем у труб
+
+        if bg.right < 0: bges.remove(bg) #удаляем бэкграунд чтобы память не забилась
+
+        if bges[len(bges) - 1].right <= WIDTH: #если 
+            bges.append(pygame.Rect(bges[len(bges) - 1].right, 0, 288, 600)) #добавляем фон
+
+    for i in range(len(pipes) - 1, -1, -1):
+        pipe = pipes[i]
+        pipe.x -= pipeSpeed
+
+        if pipe.right < 0:
+            pipes.remove(pipe)
+            if pipe in pipesScores:
+                pipesScores.remove(pipe)

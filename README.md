@@ -159,3 +159,7 @@ while play:
 
     text = font1.render('Жизни: ' + str(lives), 1, 'black')
     window.blit(text, (10, HEIGHT - 30))
+
+
+    pygame.display.update() #чтоб обновляла экран
+    clock.tick(FPS)
